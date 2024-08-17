@@ -9,6 +9,9 @@ const greenTokenStore = `0x1::coin::CoinStore<${greenToken}>`;
 const aptosContract = '0x7996e8716fb67da48d174d6e9a1bf2517e8ab37fac63a3af1f42f4e3b5644a1c'
 const storageAccount = '0x7996e8716fb67da48d174d6e9a1bf2517e8ab37fac63a3af1f42f4e3b5644a1c'
 
+const { account, connected, wallet, changeNetwork } = useWallet();
+
+
 const checkAccountInitialized = async () =>{
         if(!account){return[]}
         try{
@@ -44,6 +47,22 @@ const checkTokenBalance = async () =>{
             data: {
             function:`${aptosContract}::accounts::claim_points`,
             functionArguments:[`${storageAccount}`, id, code, ]
+            }
+        }
+        try{
+            const response = await signAndSubmitTransaction(transaction);
+            await aptos.waitForTransaction({transactionHash:response.hash});
+            console.log("Transaction Successful"); 
+        } catch (error: any) {
+            console.log(error);
+        }
+    }
+
+    const initializeUser = async ()=>{
+        const transaction:InputTransactionData = {
+            data: {
+            function:${aptosContract}::green_token::initialize_user,
+            functionArguments:[]
             }
         }
         try{

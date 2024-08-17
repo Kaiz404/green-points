@@ -1,13 +1,13 @@
 'use client';
 
+import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
-import { useWalletContext } from "../../context/WalletContext";
 import { useEffect } from 'react';
 
 const Dashboard = () => {
     const router = useRouter();
-    const { connected, setConnected } = useWalletContext();
+    const { account, connected, wallet, changeNetwork } = useWallet();
 
     useEffect(() => {
         if (!connected) {
@@ -28,7 +28,6 @@ const Dashboard = () => {
           <div className="text-4xl font-bold text-black">Claim Token</div>
           <div className="text-2xl font-bold text-black mb-6">Your Balance: 10920</div>
   
-          {/* <WalletButton /> */}
           <button className="bg-secondary text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">
             Scan QR
           </button>

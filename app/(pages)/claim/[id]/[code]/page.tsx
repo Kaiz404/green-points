@@ -26,7 +26,6 @@ const Page = () => {
           <div className="text-4xl font-bold text-black">Success!</div>
           <div className="text-2xl font-bold text-black mb-6">Your Balance: 10920</div>
   
-          {/* <WalletButton /> */}
           <button onClick={handleClick} className="bg-red-500 text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">
             Go Back
           </button>
