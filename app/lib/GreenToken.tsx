@@ -58,20 +58,18 @@ const claimGreenToken = async (id: number, code: string)=>{
     }
 }
 
-const initializeUser = async ()=>{
-    const transaction:InputTransactionData = {
-        data: {
-        function:${aptosContract}::green_token::initialize_user,
-        functionArguments:[]
-        }
-    }
-    try{
-        const response = await signAndSubmitTransaction(transaction);
-        await aptos.waitForTransaction({transactionHash:response.hash});
-        console.log("Transaction Successful"); 
-    } catch (error: any) {
-        console.log(error);
-    }
-}
-
-export default initializeUser, checkTokenBalance, checkAccountInitialized, claimGreenToken;
+// const initializeUser = async ()=>{
+//     const transaction:InputTransactionData = {
+//         data: {
+//         function:${aptosContract}::green_token::initialize_user,
+//         functionArguments:[]
+//         }
+//     }
+//     try{
+//         const response = await signAndSubmitTransaction(transaction);
+//         await aptos.waitForTransaction({transactionHash:response.hash});
+//         console.log("Transaction Successful"); 
+//     } catch (error: any) {
+//         console.log(error);
+//     }
+// }
