@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image';
+import Balance from '@/app/components/Balance';
 
 const Page = () => {
     const router = useRouter();
@@ -14,7 +15,9 @@ const Page = () => {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center w-full h-full">
+        <div className="bg-background flex flex-col justify-center items-center w-full h-full">
+          <div className="text-4xl font-bold text-black mb-4">{id}</div>
+          <div className="text-4xl font-bold text-black mb-4">{code}</div>
           <Image
             className="mt-5 mb-5"
             src="/Claimed.png"
@@ -23,10 +26,11 @@ const Page = () => {
             height={200}
           />
 
-          <div className="text-4xl font-bold text-black">Success!</div>
-          <div className="text-2xl font-bold text-black mb-6">Your Balance: 10920</div>
+          <div className="text-4xl font-bold text-black mb-4">Success!</div>
+
+          <Balance balance={12356} />
   
-          <button onClick={handleClick} className="bg-red-500 text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">
+          <button onClick={handleClick} className="bg-red-500 mt-10 text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">
             Go Back
           </button>
         </div>

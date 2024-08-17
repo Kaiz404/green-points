@@ -2,6 +2,7 @@
 
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import Image from 'next/image';
+import Balance from '../../components/Balance';
 import { useRouter } from "next/navigation";
 import { useEffect } from 'react';
 
@@ -15,8 +16,21 @@ const Dashboard = () => {
         }
     }, [connected]);
 
+    if (!connected) {
+      router.push("/");
+    }
+
+    const handleScan = () => {
+        router.push("/scanner");
+    }
+
     return (
         <div className="flex flex-col justify-center items-center w-full h-full bg-background">
+          
+          
+          <div className="text-3xl font-bold text-black">Start claiming</div>
+          <div className="text-3xl font-bold text-black">tokens!</div>
+
           <Image
             className="mt-5 mb-5"
             src="/ScanQR.png"
@@ -25,11 +39,10 @@ const Dashboard = () => {
             height={200}
           />
 
-          <div className="text-4xl font-bold text-black">Claim Token</div>
+          <Balance balance={12356} />
 
-          <div className="text-2xl font-bold text-black mb-6">Your Balance: 10920</div>
   
-          <button className="bg-secondary text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">
+          <button onClick={handleScan} className="bg-secondary text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">
             Scan QR
           </button>
         </div>

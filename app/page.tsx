@@ -21,7 +21,7 @@ export default function Home() {
   }, [account]);
 
   return (
-    <main className="bg-white h-full">
+    <main className="bg-background h-full">
         {
           connected ? (
             <div className="flex flex-col justify-center items-center w-full h-full">
