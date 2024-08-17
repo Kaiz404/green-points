@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 const Dashboard = () => {
     const router = useRouter();
-    const { account, connected, wallet, changeNetwork } = useWallet();
+    const { account, isLoading, connected, wallet, changeNetwork } = useWallet();
 
     useEffect(() => {
         if (!connected) {
@@ -26,6 +26,7 @@ const Dashboard = () => {
           />
 
           <div className="text-4xl font-bold text-black">Claim Token</div>
+
           <div className="text-2xl font-bold text-black mb-6">Your Balance: 10920</div>
   
           <button className="bg-secondary text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">

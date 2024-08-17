@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import AptosWallet from "./components/AptosWallet";
 
 export default function Home() {
   const router = useRouter();
@@ -49,8 +50,8 @@ export default function Home() {
                 height={200}
               />
 
-              <div className="text-4xl font-bold text-black">Account Not</div>
-              <div className="text-4xl font-bold text-black mb-6">Initialized</div>
+              <div className="text-4xl font-bold text-black">Account</div>
+              <div className="text-4xl font-bold text-black mb-6">Disconnected</div>
       
               <button onClick={handleInitialize} className="bg-secondary text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">
                 Initialize Wallet
