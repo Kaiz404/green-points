@@ -16,7 +16,9 @@ const Page = () => {
 
     console.log(id);
 
-    claimGreenToken(parseInt(id.toString()), code.toString(), account, signAndSubmitTransaction);
+    if (account) {
+      claimGreenToken(parseInt(id.toString()), code.toString(), account, signAndSubmitTransaction);
+    }
 
     const handleClick = () => {
         router.push("/dashboard");
