@@ -39,7 +39,7 @@ const Dashboard = () => {
             height={200}
           />
 
-          <Balance />
+          <Balance update={connected} />
 
   
           <button onClick={handleScan} className="bg-secondary text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">
