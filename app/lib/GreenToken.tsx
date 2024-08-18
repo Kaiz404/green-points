@@ -27,7 +27,7 @@ const checkAccountInitialized = async ({account}: { account: AccountInfo}) =>{
     }
 }
 
-const checkTokenBalance = async ({account}: { account: AccountInfo}) =>{
+const checkTokenBalance = async ({account}: { account: any}) =>{
     if(!account){return[]}
     try{
         const balance = await aptos.getAccountResource({
