@@ -5,13 +5,36 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import AptosWallet from "./components/AptosWallet";
+import { checkAccountInitialized, initializeUser } from "./lib/GreenToken";
+import { Aptos, AptosConfig, Network } from "@aptos-labs/ts-sdk";
 
 export default function Home() {
   const router = useRouter();
-  const { account, connected, wallet, changeNetwork } = useWallet();
+  const { account, connected, wallet, changeNetwork, signAndSubmitTransaction } = useWallet();
+  const [accountHasList, setAccountHasList] = useState<boolean>(false);
+  
+  const aptosConfig = new AptosConfig({ network: Network.TESTNET });
+  const aptos = new Aptos(aptosConfig);
 
   const handleInitialize = () => {
-    router.push("/dashboard");
+    initializeUser(signAndSubmitTransaction);
+  };
+
+  const fetchList = async () => {
+    if (!account) return [];
+    // change this to be your module account address
+    const moduleAddress = "0x7996e8716fb67da48d174d6e9a1bf2517e8ab37fac63a3af1f42f4e3b5644a1c";
+    try {
+      const todoListResource = await aptos.getAccountResource(
+        {
+          accountAddress:account?.address,
+          resourceType:`${moduleAddress}::todolist::TodoList`
+        }
+      );
+      setAccountHasList(true);
+    } catch (e: any) {
+      setAccountHasList(false);
+    }
   };
   
   useEffect(()=>{
@@ -20,10 +43,21 @@ export default function Home() {
     }
   }, [account]);
 
+  useEffect(() => {
+    fetchList();
+  }, [account?.address]);
+
+  const isAccountInitialized = async() => {
+    if (!account) return false;
+    return await checkAccountInitialized(account);
+  }
+
+
+
   return (
     <main className="bg-background h-full">
         {
-          connected ? (
+          isAccountInitialized() ? (
             <div className="flex flex-col justify-center items-center w-full h-full">
               <Image
                 className="mt-5 mb-5"
@@ -36,8 +70,12 @@ export default function Home() {
               <div className="text-4xl font-bold text-black">Account</div>
               <div className="text-4xl font-bold text-black mb-6">Initialized</div>
       
-              <button onClick={handleInitialize} className="bg-secondary text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">
+              <button onClick={() => {router.push("/dashboard")}} className="bg-secondary text-white w-auto p-4 mb-4 rounded-md text-2xl hover:shadow-xl">
                 Go to Dashboard
+              </button>
+      
+              <button onClick={handleInitialize} className="bg-secondary text-white w-auto p-4 rounded-md text-2xl hover:shadow-xl">
+                Initialize Wallet
               </button>
             </div>
           ) : (

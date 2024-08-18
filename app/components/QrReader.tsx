@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -30,8 +32,8 @@ const QrReader = () => {
 
     const regex = /^https:\/\/green-points\.vercel\.app\/claim\/\w+\/\w+/;
     const isValid = regex.test(result?.data);
-    console.log(isValid);
     if (isValid) {
+      console.log("Valid URL");
       const [id, code] = result?.data.split('/').slice(-2);
       console.log(id, code);
       router.replace(`/claim/${id}/${code}`);

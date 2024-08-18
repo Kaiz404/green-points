@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import WalletContextProvider from "./context/WalletContextProvider";
-import NavBar from "./components/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +22,6 @@ export default function RootLayout({
         <WalletContextProvider>
           <Header />
           <div className="h-[92vh] bg-background">{children}</div>
-          {/* <NavBar /> */}
         </WalletContextProvider>
       </body>
     </html>
