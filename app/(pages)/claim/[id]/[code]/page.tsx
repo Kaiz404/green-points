@@ -14,7 +14,9 @@ const Page = () => {
 
     const { account, signAndSubmitTransaction } = useWallet();
 
-    claimGreenToken(parseInt(id), code.toString(), account, signAndSubmitTransaction);
+    console.log(id);
+
+    claimGreenToken(parseInt(id.toString()), code.toString(), account, signAndSubmitTransaction);
 
     const handleClick = () => {
         router.push("/dashboard");
