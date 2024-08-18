@@ -6,7 +6,8 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useEffect, useState } from "react";
 import { get } from "http";
 
-const Balance = () => {
+const Balance = ({update}: {update: any}) => {
+    console.log("Balance updated", update);
     const { account } = useWallet();
     const [balance, setBalance] = useState<number>(0);
 
@@ -20,7 +21,7 @@ const Balance = () => {
       }
 
       getBalance();
-    }, [])
+    }, [update])
 
 
     return (

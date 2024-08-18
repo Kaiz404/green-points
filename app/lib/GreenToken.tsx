@@ -53,9 +53,11 @@ const claimGreenToken = async (id: number, code: string, account: any, signAndSu
     try{
         const response = await signAndSubmitTransaction(transaction);
         await aptos.waitForTransaction({transactionHash:response.hash});
-        console.log("Transaction Successful"); 
+        console.log("Transaction Successful, Green Token Claimed"); 
+        return true;
     } catch (error: any) {
         console.log(error);
+        return false;
     }
 }
 
