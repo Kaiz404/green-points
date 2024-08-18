@@ -1,4 +1,17 @@
+# Green Points
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Deployed on Aptos
+
+We used Aptos to deploy the Smart Contract for:
+- Token Management
+- QR Code Management
+
+Contract Address: 0x7996e8716fb67da48d174d6e9a1bf2517e8ab37fac63a3af1f42f4e3b5644a1c
+
+Link: [https://explorer.aptoslabs.com/account/0x7996e8716fb67da48d174d6e9a1bf2517e8ab37fac63a3af1f42f4e3b5644a1c/transactions?network=testnet](https://explorer.aptoslabs.com/account/0x7996e8716fb67da48d174d6e9a1bf2517e8ab37fac63a3af1f42f4e3b5644a1c/transactions?network=testnet)
+
 
 ## Getting Started
 
