@@ -10,7 +10,7 @@ const aptosContract = '0x7996e8716fb67da48d174d6e9a1bf2517e8ab37fac63a3af1f42f4e
 const storageAccount = '0x7996e8716fb67da48d174d6e9a1bf2517e8ab37fac63a3af1f42f4e3b5644a1c'
 
 
-const checkAccountInitialized = async ({account}: { account: AccountInfo}) =>{
+const checkAccountInitialized = async ({account}: { account: any}) =>{
     if(!account){return[]}
     try{
         const payload: InputViewFunctionData = {
@@ -43,7 +43,7 @@ const checkTokenBalance = async ({account}: { account: any}) =>{
 }
 
 //id is an integer, code is a string. Both Random
-const claimGreenToken = async (id: number, code: string, account: AccountInfo, signAndSubmitTransaction: any)=>{
+const claimGreenToken = async (id: number, code: string, account: any, signAndSubmitTransaction: any)=>{
     const transaction:InputTransactionData = {
         data: {
         function:`${aptosContract}::accounts::claim_points`,
