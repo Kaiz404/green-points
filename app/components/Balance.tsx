@@ -33,7 +33,7 @@ const Balance = () => {
               alt="logo"
               width={45}
               height={45} />
-            <div className="text-5xl font-bold text-black">{balance / 1000000000}</div>
+            <div className="text-5xl font-bold text-black">{balance}</div>
           </div>
         </div>
     )

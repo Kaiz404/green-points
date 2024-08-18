@@ -69,7 +69,7 @@ const initializeUser = async (signAndSubmitTransaction: any)=>{
     try{
         const response = await signAndSubmitTransaction(transaction);
         await aptos.waitForTransaction({transactionHash:response.hash});
-        console.log("Transaction Successful"); 
+        console.log("Transaction Successful");
     } catch (error: any) {
         console.log(error);
     }
